@@ -21,7 +21,7 @@ pipeline {
                     branch 'dev'// Исполняется только для ветки dev
                 }
                 steps {                    
-                    sh 'docker container run  --detach --publish 3000:3001 --name clinics-dev clinics:latest'
+                    sh 'docker container run  --detach --publish 3000:3001 --name clinics-dev --restart unless-stopped clinics:latest'
                 }
             }
             stage('Deploy for Production') {
