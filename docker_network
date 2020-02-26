@@ -1,0 +1,27 @@
+docker network ls - торазить список текущих сетей докера
+docker network inspect <имя network> - просмотреть информацию о network
+docker exec -it container1 ash[имя приложения] - запустить ash - терминал alpine linux
+docker attach <имя детаченного контейнера> - податтачить детаченый контейнер
+exit - выйти из консоли
+ip addr show - показать сетевые интерфейсы
+
+//Create own docker network based on bridge driver
+
+docker network create -d bridge my-network - создать network на драйвере bridge с именем my-network
+docker network create -d <имя драйвера> <имя сети>
+
+docker network connect my-network cont5 - подключить контейнер cont5 к сети my-network
+docker network connect <имя сети> <имя контейнера>
+
+//-- Docker network based on host driver --//
+docker run --rm -d --network host --name webserver nginx - запустить nginx контейнер
+в сети на базе драйвера host
+
+//Docker network based on macvlan driver //
+docker network create -d macvlan --subnet 172.20.0.0/16 --gateway 172.20.0.1 -o parent=eth0 my-macvlan
+
+// Drop all connections to containers except your ip
+1. ifconfig - check network interfaces
+2. iptables -I DOCKER-USER -i <interface name> ! -s <ip address> -j DROP
+3. iptables -I DOCKER-USER -i eth0 -p tcp --dport 80 -j DROP // Drop all the connections to a specific port
+4. iptables -I DOCKER-USER -i eth0 -p tcp --dport 8080 ! -s 178.140.11.9 -j DROP // Drop all the connections to a specific port except specified ip address

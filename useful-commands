@@ -24,7 +24,7 @@ apt - advanced packaging tool
 4. curl -fsSL https://download.docker.com/linux/ubuntu/gpg - получить сертификат для возможности обращения к репозиторию
 5. sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
-   stable - использование stable релиза docker для нашей версии системы
+   stable" - использование stable релиза docker для нашей версии системы
 6. sudo apt-get update - обновить список репозиториев
 7. sudo apt-get install docker-ce docker-ce-cli containerd.io - установка docker community edition
 8. sudo docker run hello-world - запустить контейнер на базе образа hello-world
@@ -60,3 +60,16 @@ apt - advanced packaging tool
   --publish 3000:3000 docker:dind - Запуск контейнера с докером, который будет использован дженкинсом для исполнения команд докера
 5. docker container run --name myjenkins --rm --detach --network jenkins --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro --volume "$HOME":/home --publish 8080:8080 jenkinsci/blueocean
 
+-------------------------------------------------------------------------------------
+
+Настройка ssh порта
+
+vim[vi, nano] /etc/ssh/sshd_config 
+Раскоментировать
+Port <номер порта>
+
+Рестартовать сервис ssh(sshd for Fedora и CentOS)
+service ssh restart
+
+Коннект по другому порту:
+ssh <username>@<server ip> -p <port number>

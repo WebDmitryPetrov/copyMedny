@@ -1,0 +1,62 @@
+/*CSS правило для селектора .head - все элементы с аттрибутом class="head" будут уобладать казанными в нем свойствами */
+.head { 
+    background-color: rgb(0, 0, 0); /* Цвет фона элемента с классом head */
+    height: 60px;   /* Высота элемента с классом head */
+    color: white; /* Цвет текста в элементе с классом head */
+    display: flex; /* Элемент с классом head отображаем как Flex-box - блочный элемент, обладающий рядом полезных свойств*/
+    align-items: center; /* Для flex-box свойство align-items укажет как мы хотим позиционировать внутренние эл-ты по вертикали*/
+    justify-content: center; /* Для flex-box свойство align-items укажет как мы хотим позиционировать внутренние эл-ты по горизонтали*/
+    
+}
+#header div{
+    margin: auto;
+}
+/*CSS правило для селектора body - все body будут обладать указанными в нем свойствами */
+body {
+    margin: 0px; /* Отступы от краев соседних элементов элементов*/
+    height: 100vh;  /* 100% vieport height*/
+}
+/*CSS правило для селектора main - все main будут обладать указанными в нем свойствами */
+main {
+    min-height: calc(100% - 100px); /* функция calc позволяет рассчитать искомый размер эл-та, здесь 100% высоты родителя минус 100px(header + footer)*/
+}
+/*CSS правило для селектора footer - все footer будут обладать указанными в нем свойствами */
+footer {
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.12);
+}
+#imgDiv {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("img.jpg");
+    background-repeat: round;
+    background-size: contain;
+}
+#imgDiv img {
+    height: 100%;
+    width: 100%;
+}
+form{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    padding: 20px;
+}
+input, textarea, select{
+    outline: none;
+    width: 300px;
+    padding: 0px 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+textarea{
+    resize: none;
+    height: 65px;
+}
+#form input[type="radio"]{
+    width: 20px;
+}
