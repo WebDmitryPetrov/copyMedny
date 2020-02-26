@@ -7,10 +7,10 @@
   "scripts": {
     "start": "node ./www"
   },
-  "engines": {
+  "engines" : {
     "node": "10.x"
   },
-  "keywords": [
+    "keywords": [
     "node",
     "heroku",
     "express"
